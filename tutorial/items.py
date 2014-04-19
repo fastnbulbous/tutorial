@@ -5,7 +5,12 @@
 
 from scrapy.item import Item, Field
 
-class DmozItem(Item):
+class BeckettItem(Item):
     title = Field()
     link = Field()
-    desc = Field()
+    description = Field()
+    serialNumber = Field()
+
+def __repr__(self):
+    stringList = ("Title:", str(self.title), " Link:", self.link, " Description:", self.description, " Serial Number:", self.serialNumber, "\n")
+    return "".join(stringList)

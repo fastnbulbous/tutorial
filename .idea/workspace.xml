@@ -59,8 +59,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dmoz_spider.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tutorial/spiders/dmoz_spider.py">
+      <file leaf-file-name="beckett_spider.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tutorial/spiders/beckett_spider.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="633">
               <folding />
@@ -96,7 +96,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tutorial/dmoz_spider.py" />
+        <option value="$PROJECT_DIR$/tutorial/beckett_spider.py" />
       </list>
     </option>
   </component>
@@ -428,7 +428,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial/spiders/dmoz_spider.py">
+    <entry file="file://$PROJECT_DIR$/tutorial/spiders/beckett_spider.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="633">
           <folding />
