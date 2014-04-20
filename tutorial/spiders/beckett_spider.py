@@ -10,7 +10,7 @@ class BeckettSpider(Spider):
     name = "beckett"
     allowed_domains = ["www.beckett.com"]
     start_urls = [
-        "http://www.beckett.com/search/?sport=185226&attr=24470&rowNum=10000&page=1&sort=print_run.desc&tmm=extended&term=1997"
+        "http://www.beckett.com/search/?sport=185226&attr=24470&rowNum=10000&page=1&sort=print_run.desc&tmm=extended&term=1997%20uer"
         #"http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/"
     ]
 
@@ -79,10 +79,29 @@ class BeckettSpider(Spider):
             itemDescription = itemDescription.replace(str(cardNumber), "").strip()
             print "Trimmed:"+itemDescription
 
+            errorCount = itemDescription.count("UER")
+
+            if errorCount > 0:
+                errorDescriptions = itemDescription.split("UER")
+                if errorCount == 1:
+                    #the card has error info is on the second one
+                    errorDescription = "Error: "+errorDescriptions[1]
+                    #remove the error description code and text from the item description
+                    itemDescription = itemDescription.replace("UER", "").strip()
+                    itemDescription = itemDescription.replace(errorDescription, "").strip()
+                    item['errorInformation'] = errorDescription
+                    print errorDescription
+                    print "Trimmed: " + itemDescription;
+                else:
+                    print "multiple error descrptions something is wrong"+errorDescriptions
+
+
             """Getting the serial number which is in a sepearte column and is listed as a number on becket"""
 
             item['serialNumber'] = ''.join(tableRow.xpath('./td/text()').re("\d+"))
             print item['serialNumber']
+
+
 
             fileoutput.write(str(item)+"\n")
 
