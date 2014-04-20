@@ -6,11 +6,21 @@
 from scrapy.item import Item, Field
 
 class BeckettItem(Item):
-    title = Field()
-    link = Field()
+    setName = Field()
+    becketLink = Field()
+    imageLink = Field()
     description = Field()
+    cardNumber = Field()
     serialNumber = Field()
+    year = Field()
+    errorInformation = Field()
+    subset = Field()
+    team = Field()
+    playerName = Field()
 
 def __repr__(self):
-    stringList = ("Title:", str(self.title), " Link:", self.link, " Description:", self.description, " Serial Number:", self.serialNumber, "\n")
-    return "".join(stringList)
+    return self.__str__()
+
+def __str__(self):
+    stringList = ("Set Name:", str(self.setName), " Link:", self.link, " Description:", self.description, " Serial Number:", self.serialNumber, "\n")
+    return str("".join(stringList))
