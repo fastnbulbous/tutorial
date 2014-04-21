@@ -37,6 +37,9 @@ class BeckettSpider(Spider):
 
             #cache the raw item description as we are going to be parsing it and splicing it up
             originalItemDescription = itemDescription
+
+            # This will could look something like
+
             print originalItemDescription
             logging.info("Parsing item description: "+originalItemDescription)
 
@@ -69,7 +72,7 @@ class BeckettSpider(Spider):
                     logging.error("There was no hash in this item to help determine the card number:"+itemDescription)
                     continue #continue the for loop of elements as this is not enough info to pass
                 else:
-                    #the setname is the first part of the string, without the has
+                    #the setname is the first part of the string, without the hash #
                     setName = itemDescription[0:hashIndexPosition].strip()
                     item['setName'] = setName
                     itemDescription = itemDescription.replace(str(setName), "").strip()
@@ -86,7 +89,7 @@ class BeckettSpider(Spider):
                 print cardNumber
                 item['cardNumber'] = cardNumber
             else:
-                logging.error("We could not find a card number for this item:"+itemDescription)
+                logging.error("We could not find a card number for this item: "+itemDescription)
                 continue #continue the for loop of elements as this is not enough info to pass
 
             #now we remove the card number from the item descrption to make further parsing easier
@@ -107,10 +110,25 @@ class BeckettSpider(Spider):
                     print errorDescription
                     print "Trimmed: " + itemDescription;
                 else:
-                    logging.error("We had an unecpexted number of UER error stetes for a card"+itemDescription)
+                    logging.error("We had an unecpexted number of UER error stetes for a card: "+itemDescription)
                     continue #continue the for loop of elements as this is not enough info to pass
 
-            """Getting the serial number which is in a sepearte column and is listed as a number on becket"""
+            """ Trim of any subset infor which may exist before doing the player names.
+            This would be if the last element in the the remaining item descrpition is all capaital letters"""
+            subsetName = itemDescription.split()[-1];
+
+            print "Evaluating if this is a subset: " + subsetName
+
+            if not subsetName.istitle():
+                # if the subset is not a title it means there is more than one capital
+                if(subsetName > 1):
+                    # the subset should be at least 2 letters
+                    item['subsetName'] = subsetName
+                    itemDescription = itemDescription.replace("UER", "").strip()
+                else:
+                    logging.warn("We had a subset of only 1 letter, seems dodgy")
+
+            """Getting the serial number which is in a separate column and is listed as a number on becket"""
 
             item['serialNumber'] = ''.join(tableRow.xpath('./td/text()').re("\d+"))
 
@@ -118,7 +136,7 @@ class BeckettSpider(Spider):
                 serialNumber = int(item['serialNumber'])
             except:
                  # the serial number is not a number and is empty. mark this item for inverstigation
-                logging.warn("There is no serial number listed for this item"+originalItemDescription)
+                logging.warn("There is no serial number listed for this item: "+originalItemDescription)
 
             fileoutput.write(str(item)+"\n")
 

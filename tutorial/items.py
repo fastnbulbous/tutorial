@@ -14,7 +14,7 @@ class BeckettItem(Item):
     serialNumber = Field()
     year = Field()
     errorInformation = Field()
-    subset = Field()
+    subsetName = Field()
     team = Field()
     playerNames = Field()
     autograph = Field()

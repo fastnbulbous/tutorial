@@ -5,6 +5,7 @@
 {'cardNumber': u'#102',
  'serialNumber': u'5400',
  'setName': u'SPx Finite',
+ 'subsetName': u'SP',
  'year': u'1998-99'}
 {'cardNumber': u'#3',
  'serialNumber': u'5000',
@@ -13,6 +14,7 @@
 {'cardNumber': u'#174',
  'serialNumber': u'4050',
  'setName': u'SPx Finite',
+ 'subsetName': u'SPx',
  'year': u'1998-99'}
 {'cardNumber': u'#60',
  'serialNumber': u'3000',
@@ -21,6 +23,7 @@
 {'cardNumber': u'#102',
  'serialNumber': u'2700',
  'setName': u'SPx Finite Radiance',
+ 'subsetName': u'SP',
  'year': u'1998-99'}
 {'cardNumber': u'#J17',
  'serialNumber': u'2300',
@@ -29,6 +32,7 @@
 {'cardNumber': u'#174',
  'serialNumber': u'2025',
  'setName': u'SPx Finite Radiance',
+ 'subsetName': u'SPx',
  'year': u'1998-99'}
 {'cardNumber': u'#NW24',
  'serialNumber': u'1500',
@@ -85,6 +89,7 @@
 {'cardNumber': u'#72',
  'serialNumber': u'500',
  'setName': u'Upper Deck Hardcourt Home Court Advantage Plus',
+ 'subsetName': u'RE',
  'year': u'1998'}
 {'cardNumber': u'#F3',
  'serialNumber': u'500',
@@ -109,6 +114,7 @@
 {'cardNumber': u'#102',
  'serialNumber': u'250',
  'setName': u'SPx Finite Spectrum',
+ 'subsetName': u'SP',
  'year': u'1998-99'}
 {'cardNumber': u'#49',
  'serialNumber': u'250',
@@ -165,10 +171,12 @@
 {'cardNumber': u'#101',
  'serialNumber': u'100',
  'setName': u'Upper Deck Bronze',
+ 'subsetName': u'HS',
  'year': u'1998-99'}
 {'cardNumber': u'#170',
  'serialNumber': u'100',
  'setName': u'Upper Deck Bronze',
+ 'subsetName': u'TN',
  'year': u'1998-99'}
 {'cardNumber': u'#89',
  'serialNumber': u'100',
@@ -177,6 +185,7 @@
 {'cardNumber': u'#172',
  'serialNumber': u'100',
  'setName': u'UD Choice Premium Choice Reserve',
+ 'subsetName': u'FS',
  'year': u'1998-99'}
 {'cardNumber': u'#SQ17',
  'serialNumber': u'100',
@@ -245,6 +254,7 @@
 {'cardNumber': u'#174',
  'serialNumber': u'75',
  'setName': u'SPx Finite Spectrum',
+ 'subsetName': u'SPx',
  'year': u'1998-99'}
 {'cardNumber': u'#C7',
  'serialNumber': u'75',
@@ -269,6 +279,7 @@
 {'cardNumber': u'#224',
  'serialNumber': u'50',
  'setName': u'SkyBox Premium Star Rubies',
+ 'subsetName': u'NF',
  'year': u'1998-99'}
 {'cardNumber': u'#127',
  'serialNumber': u'50',
@@ -281,6 +292,7 @@
 {'cardNumber': u'#9AU',
  'serialNumber': u'44',
  'setName': u'E-X Century Authen-Kicks',
+ 'subsetName': u'AU/44',
  'year': u'1998-99'}
 {'cardNumber': u'#49',
  'serialNumber': u'40',
@@ -321,6 +333,7 @@
 {'cardNumber': u'#170',
  'serialNumber': u'1',
  'setName': u'Upper Deck Gold',
+ 'subsetName': u'TN',
  'year': u'1998-99'}
 {'cardNumber': u'#21',
  'serialNumber': u'1',
@@ -365,6 +378,7 @@
 {'cardNumber': u'#101',
  'serialNumber': u'1',
  'setName': u'Upper Deck Gold',
+ 'subsetName': u'HS',
  'year': u'1998-99'}
 {'cardNumber': u'#1',
  'serialNumber': '',
