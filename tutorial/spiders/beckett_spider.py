@@ -9,11 +9,14 @@ from tutorial.items import BeckettItem
 import logging
 logging.basicConfig(filename='parsing.log',level=logging.DEBUG)
 
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
 class BeckettSpider(Spider):
     name = "beckett"
     allowed_domains = ["www.beckett.com"]
     start_urls = [
-        "http://www.beckett.com/search/?sport=185226&attr=24470&rowNum=250&page=1&sort=print_run.desc&tmm=extended&term=1998%20UER"
+        "http://www.beckett.com/search/?term=sprewell%20anthony&tmm=extended"
         #"http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/"
     ]
 
@@ -130,9 +133,34 @@ class BeckettSpider(Spider):
                 if(subsetName > 1):
                     # the subset should be at least 2 letters
                     item['subsetName'] = subsetName
-                    itemDescription = itemDescription.replace("UER", "").strip()
+                    itemDescription = itemDescription.replace(subsetName, "").strip()
                 else:
-                    logging.warn("We had a subset of only 1 letter, seems dodgy")
+                    logging.warn("We had a subset of only 1 letter for a subset title, seems dodgy")
+
+            """ Now we take a best guess of player names by splitting the remaining string with the /
+            character and then checking if the name doesn't have numbers in it"""
+
+            playersNames = []
+
+            playerNameList = itemDescription.split('/');
+
+            for playerName in playerNameList:
+                potentialNames = playerName.split() #now split each potential name in white space
+                fullName = []
+                for name in potentialNames:
+                    if not hasNumbers(str(name)):
+                        fullName.append(name+" ")
+                        print "Appending name: " + name
+                    else:
+                        logging.info("Disregarding name: " + name)
+
+                if len(fullName) > 0:
+                    print "Full player name: " + ''.join(fullName).strip()
+                    playersNames.append(''.join(fullName).strip())
+                else:
+                    logging.info("Ignored complete name sequence " + ''.join(fullName).strip())
+
+            item['playerNames'] = playersNames
 
             """Getting the serial number which is in a separate column and is listed as a number on becket"""
 
