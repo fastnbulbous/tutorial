@@ -16,7 +16,10 @@ class BeckettItem(Item):
     errorInformation = Field()
     subset = Field()
     team = Field()
-    playerName = Field()
+    playerNames = Field()
+    autograph = Field()
+    memorabilia = Field()
+    rookieCard = Field()
 
 def __repr__(self):
     return self.__str__()
