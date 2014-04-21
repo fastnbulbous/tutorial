@@ -13,7 +13,7 @@ class BeckettSpider(Spider):
     name = "beckett"
     allowed_domains = ["www.beckett.com"]
     start_urls = [
-        "http://www.beckett.com/search/?sport=185226&attr=24470&rowNum=250&page=1&sort=print_run.desc&tmm=extended&term=1998%20van%20horn"
+        "http://www.beckett.com/search/?sport=185226&attr=24470&rowNum=250&page=1&sort=print_run.desc&tmm=extended&term=1998%20UER"
         #"http://www.dmoz.org/Computers/Programming/Languages/Python/Resources/"
     ]
 
@@ -25,6 +25,9 @@ class BeckettSpider(Spider):
         selector = Selector(response)
         tableRows = selector.xpath("//table[@id='faceted']//tr")
         becketItems = []
+
+        logging.info("Starting new parse\n")
+        logging.info("URL search: " + response.url)
 
         for tableRow in tableRows:
             print "Parsing Row"
@@ -102,13 +105,16 @@ class BeckettSpider(Spider):
                 errorDescriptions = itemDescription.split("UER")
                 if errorCount == 1:
                     #the card has error info is on the second one
-                    errorDescription = "Error: "+errorDescriptions[1]
+                    errorDescription = errorDescriptions[1]
+
                     #remove the error description code and text from the item description
                     itemDescription = itemDescription.replace("UER", "").strip()
-                    itemDescription = itemDescription.replace(errorDescription, "").strip()
-                    item['errorInformation'] = errorDescription
-                    print errorDescription
-                    print "Trimmed: " + itemDescription;
+                    print "Trimmed UER Tag: " + itemDescription
+                    itemDescription = itemDescription.replace(errorDescription.strip(), "").strip()
+                    item['errorInformation'] = "Error: " + errorDescription
+
+                    print "Parsed error description: " + errorDescription
+                    print "Trimmed error info: " + itemDescription
                 else:
                     logging.error("We had an unecpexted number of UER error stetes for a card: "+itemDescription)
                     continue #continue the for loop of elements as this is not enough info to pass
